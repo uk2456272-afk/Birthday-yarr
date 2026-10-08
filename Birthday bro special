@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Tanish ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI',sans-serif;
+    min-height:100vh;
+    overflow:hidden;
+    background:linear-gradient(135deg,#10002b,#240046,#5a189a);
+    color:white;
+}
+
+/* ---------- COMMON ---------- */
+
+.screen{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    transition:1s ease;
+}
+
+.hidden{
+    opacity:0;
+    pointer-events:none;
+    transform:scale(1.15);
+}
+
+/* ---------- FIRST SCREEN ---------- */
+
+#welcome{
+    flex-direction:column;
+    padding:25px;
+}
+
+.small{
+    font-size:18px;
+    letter-spacing:4px;
+    color:#ffb3e6;
+    margin-bottom:15px;
+}
+
+#welcome h1{
+    font-size:clamp(35px,10vw,70px);
+    background:linear-gradient(90deg,#ff69b4,#ffd166,#fff);
+    -webkit-background-clip:text;
+    color:transparent;
+    margin-bottom:15px;
+}
+
+#welcome p{
+    font-size:19px;
+    color:#eee;
+    margin-bottom:35px;
+}
+
+.openBtn{
+    border:none;
+    outline:none;
+    padding:16px 35px;
+    border-radius:50px;
+    font-size:18px;
+    font-weight:bold;
+    color:white;
+    cursor:pointer;
+    background:linear-gradient(45deg,#ff006e,#8338ec);
+    box-shadow:0 0 30px #ff006e;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.08);
+        box-shadow:0 0 50px #ff006e;
+    }
+}
+
+/* ---------- SURPRISE SCREEN ---------- */
+
+#surprise{
+    flex-direction:column;
+    padding:20px;
+}
+
+.envelope{
+    width:220px;
+    height:150px;
+    position:relative;
+    margin-bottom:35px;
+    cursor:pointer;
+}
+
+.env-body{
+    position:absolute;
+    inset:0;
+    background:#ff477e;
+    border-radius:10px;
+    box-shadow:0 0 35px #ff477e;
+}
+
+.env-flap{
+    position:absolute;
+    top:0;
+    left:0;
+    width:0;
+    height:0;
+    border-left:110px solid transparent;
+    border-right:110px solid transparent;
+    border-top:80px solid #ff7096;
+    transform-origin:top;
+    transition:.8s;
+    z-index:3;
+}
+
+.letter{
+    position:absolute;
+    width:175px;
+    height:125px;
+    background:white;
+    color:#8b1450;
+    left:22px;
+    top:15px;
+    border-radius:8px;
+    transition:.9s;
+    z-index:2;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+}
+
+.envelope.open .env-flap{
+    transform:rotateX(180deg);
+}
+
+.envelope.open .letter{
+    transform:translateY(-100px);
+}
+
+#surprise h2{
+    margin-top:10px;
+    font-size:20px;
+    color:#ffd6ec;
+}
+
+/* ---------- BIRTHDAY ---------- */
+
+#birthday{
+    flex-direction:column;
+    padding:25px;
+    background:
+      radial-gradient(circle at center,#6a0572 0%,#240046 45%,#10002b 100%);
+}
+
+.crown{
+    font-size:55px;
+    animation:float 2s infinite alternate;
+}
+
+.name{
+    font-size:clamp(40px,11vw,85px);
+    font-weight:900;
+    margin:5px 0;
+    background:linear-gradient(
+        90deg,
+        #ff4ecd,
+        #ffd166,
+        #00f5ff,
+        #ff4ecd
+    );
+    background-size:300%;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:rainbow 4s linear infinite;
+}
+
+.son{
+    font-size:18px;
+    letter-spacing:3px;
+    color:#ddd;
+}
+
+.birthdayText{
+    max-width:700px;
+    margin:25px auto;
+    font-size:19px;
+    line-height:1.7;
+}
+
+.birthdayText strong{
+    color:#ffd166;
+}
+
+.cake{
+    font-size:85px;
+    animation:cake 1s infinite alternate;
+}
+
+@keyframes cake{
+    from{transform:translateY(0) rotate(-3deg);}
+    to{transform:translateY(-12px) rotate(3deg);}
+}
+
+@keyframes float{
+    from{transform:translateY(0);}
+    to{transform:translateY(-15px);}
+}
+
+@keyframes rainbow{
+    from{background-position:0%;}
+    to{background-position:300%;}
+}
+
+/* ---------- PARTY BUTTON ---------- */
+
+.partyBtn{
+    border:none;
+    padding:14px 30px;
+    border-radius:40px;
+    color:white;
+    background:linear-gradient(45deg,#ff006e,#8338ec,#00b4d8);
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 0 25px #ff006e;
+}
+
+/* ---------- FLOATING HEARTS ---------- */
+
+.heart{
+    position:absolute;
+    bottom:-50px;
+    font-size:25px;
+    animation:heartUp linear forwards;
+    pointer-events:none;
+}
+
+@keyframes heartUp{
+    to{
+        transform:
+          translateY(-110vh)
+          translateX(var(--x))
+          rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* ---------- CONFETTI ---------- */
+
+.confetti{
+    position:absolute;
+    width:9px;
+    height:18px;
+    top:-30px;
+    animation:fall linear forwards;
+    pointer-events:none;
+}
+
+@keyframes fall{
+    to{
+        transform:
+          translateY(110vh)
+          rotate(720deg);
+    }
+}
+
+/* ---------- FINAL PARTY ---------- */
+
+#party{
+    flex-direction:column;
+    padding:20px;
+}
+
+#party h1{
+    font-size:clamp(45px,12vw,100px);
+    animation:partyText .7s infinite alternate;
+}
+
+@keyframes partyText{
+    from{
+        transform:scale(1) rotate(-2deg);
+        color:#ff4ecd;
+    }
+    to{
+        transform:scale(1.08) rotate(2deg);
+        color:#ffd166;
+    }
+}
+
+#party p{
+    font-size:25px;
+    margin:20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= FIRST PAGE ================= -->
+
+<section id="welcome" class="screen">
+
+    <div class="small">✨ A LITTLE SURPRISE ✨</div>
+
+    <h1>Hey Tanish ❤️</h1>
+
+    <p>
+        Someone has prepared something special for you...
+        <br>
+        Ready?
+    </p>
+
+    <button class="openBtn" onclick="openSurprise()">
+        🎁 OPEN YOUR SURPRISE
+    </button>
+
+</section>
+
+
+<!-- ================= ENVELOPE ================= -->
+
+<section id="surprise" class="screen hidden">
+
+    <div class="envelope" id="envelope" onclick="openLetter()">
+
+        <div class="env-body"></div>
+
+        <div class="letter">
+            ❤️ For You ❤️
+        </div>
+
+        <div class="env-flap"></div>
+
+    </div>
+
+    <h2>Tap the envelope 💌</h2>
+
+</section>
+
+
+<!-- ================= BIRTHDAY PAGE ================= -->
+
+<section id="birthday" class="screen hidden">
+
+    <div class="crown">👑</div>
+
+    <div class="cake">🎂</div>
+
+    <div class="son">S/O SHEEL</div>
+
+    <h1 class="name">TANISH DIXIT</h1>
+
+    <div class="birthdayText">
+
+        🎉 <strong>HAPPY BIRTHDAY TANISH!</strong> 🎉
+
+        <br><br>
+
+        Today is your special day! ❤️
+
+        <br>
+
+        May your life always be full of
+        <strong>happiness, success, love</strong>
+        and lots of beautiful memories. ✨
+
+        <br><br>
+
+        Hamesha aise hi haste rehna,
+        khush rehna aur apni life mein
+        bahut aage badhna! 🥳
+
+        <br><br>
+
+        <strong>
+            30 OCTOBER — YOUR SPECIAL DAY 🎂🔥
+        </strong>
+
+    </div>
+
+    <button class="partyBtn" onclick="startParty()">
+        🎉 LET'S PARTY 🎉
+    </button>
+
+</section>
+
+
+<!-- ================= PARTY PAGE ================= -->
+
+<section id="party" class="screen hidden">
+
+    <div style="font-size:70px;">🥳🎂🎉</div>
+
+    <h1>PARTY TIME!</h1>
+
+    <p>
+        TANISH DIXIT 🔥
+        <br>
+        Aaj sirf celebration hoga! 😎
+    </p>
+
+    <div style="font-size:45px;">
+        🎈 🎊 🍕 🥳 🎵 🎂 🎁 🎈
+    </div>
+
+</section>
+
+
+<script>
+
+/* ---------- SCREEN CHANGE ---------- */
+
+function changeScreen(current,next){
+
+    document.getElementById(current)
+        .classList.add("hidden");
+
+    setTimeout(()=>{
+
+        document.getElementById(next)
+            .classList.remove("hidden");
+
+    },700);
+}
+
+
+/* ---------- OPEN SURPRISE ---------- */
+
+function openSurprise(){
+
+    changeScreen("welcome","surprise");
+
+    createHearts(15);
+}
+
+
+/* ---------- OPEN LETTER ---------- */
+
+function openLetter(){
+
+    const envelope =
+        document.getElementById("envelope");
+
+    envelope.classList.add("open");
+
+    setTimeout(()=>{
+
+        changeScreen("surprise","birthday");
+
+        createConfetti(100);
+        createHearts(30);
+
+    },1300);
+}
+
+
+/* ---------- HEARTS ---------- */
+
+function createHearts(amount){
+
+    const emojis=["❤️","💖","💕","💗","💜","💙"];
+
+    for(let i=0;i<amount;i++){
+
+        const heart=document.createElement("div");
+
+        heart.className="heart";
+
+        heart.innerHTML =
+            emojis[Math.floor(Math.random()*emojis.length)];
+
+        heart.style.left =
+            Math.random()*100+"vw";
+
+        heart.style.setProperty(
+            "--x",
+            (Math.random()*300-150)+"px"
+        );
+
+        heart.style.animationDuration =
+            (4+Math.random()*5)+"s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },9000);
+    }
+}
+
+
+/* ---------- CONFETTI ---------- */
+
+function createConfetti(amount){
+
+    const colors=[
+        "#ff006e",
+        "#ffd166",
+        "#00f5ff",
+        "#06d6a0",
+        "#8338ec",
+        "#ff7b00"
+    ];
+
+    for(let i=0;i<amount;i++){
+
+        const c=document.createElement("div");
+
+        c.className="confetti";
+
+        c.style.left =
+            Math.random()*100+"vw";
+
+        c.style.background =
+            colors[Math.floor(
+                Math.random()*colors.length
+            )];
+
+        c.style.animationDuration =
+            (2+Math.random()*4)+"s";
+
+        c.style.animationDelay =
+            Math.random()*2+"s";
+
+        document.body.appendChild(c);
+
+        setTimeout(()=>{
+            c.remove();
+        },7000);
+    }
+}
+
+
+/* ---------- PARTY ---------- */
+
+function startParty(){
+
+    changeScreen("birthday","party");
+
+    createConfetti(250);
+    createHearts(80);
+
+    // Continuous party effects
+    setInterval(()=>{
+        createConfetti(50);
+        createHearts(15);
+    },2500);
+}
+
+</script>
+
+</body>
+</html>
